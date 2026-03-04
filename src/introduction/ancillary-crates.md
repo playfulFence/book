@@ -8,7 +8,7 @@ The first step in working with a project is to create it, the main way to do thi
 
 The core crate that ties all work with Espressif chips in Rust is the `esp-hal` crate. Through it, you will be able to perform basic initialization of the chip, as well as access drivers for the peripherals available on the chip. The full [`esp-hal` documentation] for selected chip will give unambiguous information about what peripherals are available to use, and the stability of their respective drivers.
 
-Furthermore, you may want to use more advanced functionality of the chip. For example, network and connectivity. This part of the ecosystem is the responsibility of `esp-radio`, which combines drivers for the communication protocols available on one or another of Espressif's products: `Wi-Fi`, `BLE`, `esp-now` and low-level `IEEE 802.15.4` for the lower layers of communication. More detailed information for each chip is available in the [`esp-radio` sub-repository].
+Furthermore, you may want to use more advanced functionality of the chip. For example, network and connectivity. This part of the ecosystem is the responsibility of `esp-radio`, which combines drivers for the communication protocols available on one or another of Espressif's products: `Wi-Fi`, `BLE`, `esp-now` and low-level `IEEE 802.15.4` for the lower layers of communication. More detailed information for each chip is available in the [`esp-radio` sub-repository]. It is also worth mentioning that radio support requires the stack to run continuously in the background (timers, interrupts, state machines). `esp-radio` relies on `esp-rtos` for the scheduling/runtime glue needed to run reliably, and `esp-generate` will add `esp-rtos` automatically when you enable the appropriate template options.
 
 For more advanced work with chip memory and to use collections from the `alloc` crate in `no_std` that require heap allocation, you are welcome to use `esp-alloc`. A separate [chapter in the book](./../application-development/alloc.md) is devoted to this.
 
@@ -32,7 +32,7 @@ The table below briefly describes all crates in the `esp-hal` ecosystem and thei
 | `esp-rtos`               | Scheduler implementation for esp-radio, embassy support for `esp-hal`.                                         | Unstable              |
 | `esp-sync`               | Synchronization primitives for Espressif devices.                                                              | Unstable              |
 | `esp-storage`            | Storage utilities for Espressif devices.                                                                       | Unstable              |
-| `esp-radio`              | Wi‑Fi, BLE, IEEE 802.15.4, and ESP‑NOW functionality for Espressif devices.                                    | Unstable              |
+| `esp-radio`              | Wi‑Fi, BLE, IEEE 802.15.4, and ESP‑NOW functionality for Espressif devices.                                    | Stable                |
 | `xtensa-lx`              | Low-level access to Xtensa LX processors and peripherals.                                                      | Unstable              |
 | `xtensa-lx-rt`           | Minimal startup/runtime for Xtensa LX CPUs from Espressif.                                                     | Unstable              |
 
