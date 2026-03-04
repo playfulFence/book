@@ -16,9 +16,7 @@ You can also directly download pre-compiled [release binaries][release-binaries]
 
 `esp-generate` provides more than dependency selection: it applies a known set of crates and feature combinations corresponding to the chosen template options, reducing the amount of manual configuration required to produce a working project.
 
-Enabling various options may add additional crates to `Cargo.toml` of the generated project. Certain capabilities require supporting libraries to function correctly. The templates aim to keep the dependency set minimal while ensuring the generated project is functional and immediately runnable.
-
-All generated projects are based on `esp-hal`. Depending on the selected options, `esp-generate` adds the required support crates (for example `demft` logging, heap allocation, async executors etc.) and applies the appropriate feature flags so that the configuration is internally consistent.
+Enabling various options may add additional crates to `Cargo.toml` of the generated project. The templates aim to keep the dependency set minimal while ensuring the generated project is functional and immediately runnable.
 
 Wireless connectivity provided by `esp-radio`, as stated in [Ancillary Crates](../../introduction/ancillary-crates.md) chapter, relies on `esp-rtos`. For this reason, enabling Wi-Fi or BLE causes `esp-generate` to include this crate and configure it with the `esp-radio` feature, providing the scheduling and runtime integration required for reliable operation. When Embassy support is enabled, `esp-rtos` also serves as the integration point for async execution on supported chips, with a corresponding feature enabled in the template project. For IP networking, the templates include the surrounding networking components. This typically includes `smoltcp`, `embassy-net` for async networking, when Embassy is enabled.
 
