@@ -12,11 +12,11 @@ cargo install esp-generate --locked
 
 You can also directly download pre-compiled [release binaries][release-binaries] or use [`cargo-binstall`][cargo-binstall].
 
-## What `esp-generate` configures
+## What `esp-generate` Сonfigures
 
 `esp-generate` provides more than dependency selection: it applies a known set of crates and feature combinations corresponding to the chosen template options, reducing the amount of manual configuration required to produce a working project.
 
-Enabling various options may add additional crates to `Cargo.toml` of the generated project. Certain capabilities require supporting libraries in order to function correctly. The templates aim to keep the dependency set minimal while ensuring the generated project is functional and immediately runnable.
+Enabling various options may add additional crates to `Cargo.toml` of the generated project. Certain capabilities require supporting libraries to function correctly. The templates aim to keep the dependency set minimal while ensuring the generated project is functional and immediately runnable.
 
 All generated projects are based on `esp-hal`. Depending on the selected options, `esp-generate` adds the required support crates (for example `demft` logging, heap allocation, async executors etc.) and applies the appropriate feature flags so that the configuration is internally consistent.
 
