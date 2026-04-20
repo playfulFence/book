@@ -16,9 +16,9 @@ You can also directly download pre-compiled [release binaries][release-binaries]
 
 `esp-generate` provides more than dependency selection: it applies a known set of crates and feature combinations corresponding to the chosen template options, reducing the amount of manual configuration required to produce a working project.
 
-Enabling various options may add additional crates to `Cargo.toml` of the generated project. The templates aim to keep the dependency set minimal while ensuring the generated project is functional and immediately runnable.
+When options are selected for the template, `esp-generate` updates the generated `Cargo.toml` with the crates and Cargo features those choices require. The templates aim to keep that list as short as practical while still creating a skeleton of an applications that builds and runs for the selected profile, without the need to manually configure the dependencies for the first successful build.
 
-Wireless connectivity provided by `esp-radio`, as stated in [Ancillary Crates](../../introduction/ancillary-crates.md) chapter, relies on `esp-rtos`. For this reason, enabling Wi-Fi or BLE causes `esp-generate` to include this crate and configure it with the `esp-radio` feature, providing the scheduling and runtime integration required for reliable operation. When Embassy support is enabled, `esp-rtos` also serves as the integration point for async execution on supported chips, with a corresponding feature enabled in the template project. For IP networking, the templates include the surrounding networking components. This typically includes `smoltcp`, `embassy-net` for async networking, when Embassy is enabled.
+The [Ancillary Crates](../../introduction/ancillary-crates.md) chapter describes how wireless, async, and networking choices map onto individual crates when that level of detail is needed.
 
 Some options have coupled configurations. Logging is configured either via `defmt` or `log` with a corresponding frontend. Certain crates are also included as part of the standard baseline because they support common embedded workflows. For example, `esp-bootloader-esp-idf` includes additional support of 2nd stage bootloader, and `critical-section` is included because many embedded crates rely on it to implement interrupt-critical regions.
 
